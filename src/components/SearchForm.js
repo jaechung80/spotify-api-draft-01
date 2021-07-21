@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { searchSpotify } from '../store/albums';
+import DisplayResults from './DisplayResults';
 
-function SearchForm(props) {
+const SearchForm = (props) => {
   const [search, setSearch] = useState('');
 
   const handleChange = (evt) => {
@@ -28,9 +29,10 @@ function SearchForm(props) {
         />
         <button type='submit'>Search</button>
       </form>
+      <DisplayResults />
     </div>
   );
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {

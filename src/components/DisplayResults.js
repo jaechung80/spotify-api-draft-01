@@ -1,7 +1,43 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-function DisplayResults() {
-  return <div>test</div>;
-}
+const DisplayResults = (props) => {
+  useEffect(() => {
+    console.log('in DisplayResults props.albums', props.albums);
+  });
 
-export default DisplayResults;
+  return (
+    <div>
+      {/* {props.albums && (
+        <div>
+          <ul>
+            <li>Artist: {props.albums.items[0].artists[0].name}</li>
+            <li>Album: {props.albums.items[0].name}</li>
+          </ul>
+          <img src={props.albums.items[0].images[0].url} />
+        </div>
+      )} */}
+      <ul>
+        {props.albums?.items?.map((album) => {
+          return (
+            <div>
+              <li>Artist: {album.artists[0].name}</li>
+              <li>Album: {album.name}</li>
+              <li>
+                <img src={album.images[0].url} />
+              </li>
+            </div>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
+
+const mapStateToDispatch = (state) => {
+  return {
+    albums: state.albums,
+  };
+};
+
+export default connect(mapStateToDispatch)(DisplayResults);
