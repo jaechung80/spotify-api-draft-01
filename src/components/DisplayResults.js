@@ -8,15 +8,6 @@ const DisplayResults = (props) => {
 
   return (
     <div>
-      {/* {props.albums && (
-        <div>
-          <ul>
-            <li>Artist: {props.albums.items[0].artists[0].name}</li>
-            <li>Album: {props.albums.items[0].name}</li>
-          </ul>
-          <img src={props.albums.items[0].images[0].url} />
-        </div>
-      )} */}
       <ul>
         {props.albums?.items?.map((album) => {
           return (
