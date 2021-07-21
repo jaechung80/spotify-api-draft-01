@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { searchSpotify } from '../store/albums';
+import searchSpotify from '../store/common';
 import DisplayResults from './DisplayResults';
 
 const SearchForm = (props) => {
