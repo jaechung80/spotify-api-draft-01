@@ -1,29 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { setAuthHeader } from '../api/index';
+import { connect } from 'react-redux';
+import { searchSpotify } from '../store/albums';
 
-function SearchForm() {
+function SearchForm(props) {
   const [search, setSearch] = useState('');
 
   const handleChange = (evt) => {
     setSearch(evt.target.value);
   };
 
-  const handleSearch = async (evt) => {
+  const handleSearch = (evt) => {
     evt.preventDefault();
     console.log('in handleSearch before anything happens');
-
-    try {
-      setAuthHeader();
-      const result = await axios.get(
-        `https://api.spotify.com/v1/search?query=${encodeURIComponent(
-          search
-        )}&type=artist`
-      );
-      console.log('in handleSearch, result', result);
-    } catch (err) {
-      console.log(err);
-    }
+    props.searchSpotify(search);
   };
 
   useEffect(() => console.log('here is search in state', search));
@@ -43,4 +32,10 @@ function SearchForm() {
   );
 }
 
-export default SearchForm;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchSpotify: (search) => dispatch(searchSpotify(search)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SearchForm);
