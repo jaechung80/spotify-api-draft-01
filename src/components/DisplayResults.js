@@ -14,7 +14,7 @@ const DisplayResults = (props) => {
   });
 
   return (
-    <div>
+    <>
       <Button
         onClick={() => {
           setFilter('albums');
@@ -36,11 +36,11 @@ const DisplayResults = (props) => {
       >
         Songs
       </Button>
-
+      <Button>Load next 20 results</Button>
       {filter === 'albums' && <AlbumsList albums={props.albums} />}
       {filter === 'artists' && <ArtistsList artists={props.artists} />}
       {filter === 'tracks' && <TracksList tracks={props.tracks} />}
-    </div>
+    </>
   );
 };
 

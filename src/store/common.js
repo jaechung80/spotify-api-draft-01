@@ -27,4 +27,24 @@ const searchSpotify = (search) => {
   };
 };
 
+const loadMoreResults = (nextLink) => {
+  return async (dispatch) => {
+    try {
+      console.log('in loadMoreResults thunk');
+      setAuthHeader();
+      const { data } = await axios.get(nextLink);
+
+      console.log('in loadMoreResults, getting data', data);
+      const { albums, artists, tracks } = data;
+      console.log('in loadMoreResults, here are the albums', albums);
+
+      dispatch(setAlbums(albums));
+      dispatch(setArtists(artists));
+      dispatch(setTracks(tracks));
+    } catch (err) {
+      console.log('error, err');
+    }
+  };
+};
+
 export default searchSpotify;
