@@ -11,10 +11,9 @@ const DisplayResults = (props) => {
 
   return (
     <div>
-      test
-      {/* <AlbumsList /> */}
-      {/* <ArtistsList /> */}
-      <TracksList />
+      <AlbumsList albums={props.albums} />
+      <ArtistsList artists={props.artists} />
+      <TracksList tracks={props.tracks} />
     </div>
   );
 };

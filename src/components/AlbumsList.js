@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 
 const AlbumsList = (props) => {
   useEffect(() => {
@@ -23,10 +22,4 @@ const AlbumsList = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    albums: state.albums,
-  };
-};
-
-export default connect(mapStateToProps)(AlbumsList);
+export default AlbumsList;

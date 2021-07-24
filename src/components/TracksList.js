@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 
 const TracksList = (props) => {
   useEffect(() => {
@@ -30,10 +29,4 @@ const TracksList = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    tracks: state.tracks,
-  };
-};
-
-export default connect(mapStateToProps)(TracksList);
+export default TracksList;
