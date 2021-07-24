@@ -8,19 +8,17 @@ const AlbumsList = (props) => {
 
   return (
     <div>
-      <ul>
-        {props.albums?.items?.map((album) => {
-          return (
-            <div>
-              <li>Artist: {album.artists[0].name}</li>
-              <li>Album: {album.name}</li>
-              <li>
-                <img src={album.images[0].url} />
-              </li>
-            </div>
-          );
-        })}
-      </ul>
+      {props.albums?.items?.map((album) => {
+        return (
+          <ul key={album.id}>
+            <li>Artist: {album.artists[0].name}</li>
+            <li>Album: {album.name}</li>
+            <li>
+              <img src={album.images[0].url} />
+            </li>
+          </ul>
+        );
+      })}
     </div>
   );
 };
