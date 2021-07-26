@@ -1,31 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import searchSpotify from '../store/common';
 import DisplayResults from './DisplayResults';
 
-const SearchForm = (props) => {
+export const SearchForm = (props) => {
   const [search, setSearch] = useState('');
+  const { handleSearch } = props;
 
   const handleChange = (evt) => {
     setSearch(evt.target.value);
   };
 
-  const handleSearch = (evt) => {
-    evt.preventDefault();
-    console.log('in handleSearch before anything happens');
-    props.searchSpotify(search);
-  };
-
-  useEffect(() => console.log('here is search in state', search));
+  useEffect(() => {
+    console.log('here is search in state', search, 'props', props);
+  });
 
   return (
     <div>
-      <form onSubmit={handleSearch}>
+      <form
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          handleSearch(search);
+        }}
+      >
+        <label htmlFor='search'>Search for an album, artist, or song:</label>
         <input
-          type='text'
+          id='search'
           name='search'
-          value={search}
           onChange={handleChange}
+          type='text'
+          value={search}
         />
         <button type='submit'>Search</button>
       </form>
@@ -33,11 +36,3 @@ const SearchForm = (props) => {
     </div>
   );
 };
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    searchSpotify: (search) => dispatch(searchSpotify(search)),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(SearchForm);
