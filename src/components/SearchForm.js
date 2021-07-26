@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import DisplayResults from './DisplayResults';
 
 export const SearchForm = (props) => {
@@ -15,7 +14,7 @@ export const SearchForm = (props) => {
   });
 
   return (
-    <div>
+    <>
       <form
         onSubmit={(evt) => {
           evt.preventDefault();
@@ -33,6 +32,6 @@ export const SearchForm = (props) => {
         <button type='submit'>Search</button>
       </form>
       <DisplayResults />
-    </div>
+    </>
   );
 };

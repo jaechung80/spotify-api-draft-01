@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import AlbumsList from './AlbumsList';
 import ArtistsList from './ArtistsList';
 import TracksList from './TracksList';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
+import FilterButton from './FilterButton';
 
-const DisplayResults = (props) => {
+export const DisplayResults = (props) => {
   const [filter, setFilter] = useState('albums');
 
   useEffect(() => {
@@ -15,28 +16,25 @@ const DisplayResults = (props) => {
 
   return (
     <>
-      <Button
+      <FilterButton
+        filter={'albums'}
         onClick={() => {
           setFilter('albums');
         }}
-      >
-        Albums
-      </Button>
-      <Button
+      />
+      <FilterButton
+        filter={'artists'}
         onClick={() => {
           setFilter('artists');
         }}
-      >
-        Artists
-      </Button>
-      <Button
+      />
+      <FilterButton
+        filter={'tracks'}
         onClick={() => {
           setFilter('tracks');
         }}
-      >
-        Songs
-      </Button>
-      <Button>Load next 20 results</Button>
+      />
+      {/* <Button>Load next 20 results</Button> */}
       {filter === 'albums' && <AlbumsList albums={props.albums} />}
       {filter === 'artists' && <ArtistsList artists={props.artists} />}
       {filter === 'tracks' && <TracksList tracks={props.tracks} />}

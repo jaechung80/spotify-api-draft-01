@@ -1,0 +1,9 @@
+
+
+.albums,
+.artists,
+.tracks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

@@ -5,7 +5,7 @@ import searchSpotify from '../store/common';
 
 const Home = (props) => {
   const handleSearch = (search) => {
-    console.log('in handleSearch before anything happens');
+    console.log('in handleSearch before anything happens, search term');
     props.searchSpotify(search);
   };
 
