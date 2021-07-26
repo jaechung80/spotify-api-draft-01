@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchForm component renders SearchForm component correctly 1`] = `ShallowWrapper {}`;
+
+exports[`SearchForm component renders SearchForm component without crashing 1`] = `ShallowWrapper {}`;
